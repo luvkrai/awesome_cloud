@@ -15,7 +15,7 @@ def launch_container():
         if r.ok:
             flash('A container has been created!', 'success')
         else:
-            flash('Could not create the container', 'danger')
+            flash('Error!! Could not create the container', 'danger')
     return render_template('launch.html', title='Launch Container',
                            form=form, legend='New Container')
 
