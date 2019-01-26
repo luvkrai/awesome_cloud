@@ -26,8 +26,10 @@ def create_app(config_class=Config):
     from flaskblog.users.routes import users
     from flaskblog.main.routes import main
     from flaskblog.errors.handlers import errors
+    from flaskblog.docker_data.routes import docker
     app.register_blueprint(users)
     app.register_blueprint(main)
     app.register_blueprint(errors)
+    app.register_blueprint(docker)
 
     return app

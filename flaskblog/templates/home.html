@@ -8,7 +8,11 @@
             </div>
             <p class="article-content">{{ user.username }}</p>
             <p class="article-content">{{ text }}</p>
-            <table id="t01">
+          </div>
+        </article>
+        <p> Container Details</p>
+        <article class="media content-section">
+            <table id="t01" table-layout: fixed; box-sizing: border-box>
             <tr>
               <th>Container Name</th>
               <th>Container ID</th> 
@@ -24,6 +28,5 @@
               </tr>
             {% endfor %}
           </table>
-          </div>
         </article>
 {% endblock content %}
