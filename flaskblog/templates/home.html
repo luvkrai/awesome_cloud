@@ -7,7 +7,23 @@
               <a class="mr-2" href="#"></a>
             </div>
             <p class="article-content">{{ user.username }}</p>
-			<p class="article-content"><h1>{{ text }}</h1></p>
+            <p class="article-content">{{ text }}</p>
+            <table id="t01">
+            <tr>
+              <th>Container Name</th>
+              <th>Container ID</th> 
+              <th>Container Image</th>
+              <th>Container Status</th>
+            </tr>
+            {% for row in table %}
+              <tr>
+                <td>{{row['name']}}</td>
+                <td>{{row['container_id']}}</td>
+                <td>{{row['image']}}</td>
+                <td>{{row['status']}}</td>
+              </tr>
+            {% endfor %}
+          </table>
           </div>
         </article>
 {% endblock content %}

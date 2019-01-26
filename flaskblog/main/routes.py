@@ -9,8 +9,9 @@ main = Blueprint('main', __name__)
 @main.route("/home")
 @login_required
 def home():
-    r = requests.get('http://10.249.112.106:5000/docker')
-    return render_template('home.html', user=current_user,text=r.text)
+	r = requests.get('http://localhost:50001/docker')
+	table = r.json()
+	return render_template('home.html',user=current_user,table=table)
 
 
 @main.route("/about")
