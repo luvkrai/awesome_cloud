@@ -6,10 +6,14 @@ def initialize_docker():
 	client = docker.DockerClient(base_url='tcp://10.249.112.106:2375', tls=False)
 	return client
 
-def getDocker():
+def getDocker(status=None):
 	client = initialize_docker()
 	result = []
-	for container in client.containers.list():
+	if status:
+		container_list = client.containers.list(status)
+	else:
+		container_list = client.containers.list()
+	for container in container_list:
 		row = {
 		'name': container.name,
 		'container_id': container.short_id,
@@ -40,6 +44,28 @@ def docker_container():
     #return jsonify(getDocker())
 	#return jsonify(dummy)
 	return json.dumps(getDocker())
+
+@app.route("/exited_container")
+def exited_container():
+	dummy=[
+  {
+    "container_id": "71686da8da",
+    "image": "alpine:3.8",
+    "name": "focused_buck",
+    "status": "running"
+  },
+  {
+    "container_id": "7594a76ee0",
+    "image": "alpine:3.8",
+    "name": "affectionate_margulis",
+    "status": "running"
+  }
+]
+    #return jsonify(getDocker())
+	#return jsonify(dummy)
+	return json.dumps(getDocker({'status':'exited'}))
+
+
 @app.route("/launch_container",methods=['GET', 'POST'])
 def launch_container():
 	content = request.json

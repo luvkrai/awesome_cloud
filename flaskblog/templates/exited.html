@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#"></a>
+            </div>
+            <p class="article-content">{{ user.username }}</p>
+            <p class="article-content">{{ text }}</p>
+          </div>
+        </article>
+        <p> Container Details</p>
+        <article class="media content-section">
+            <table id="t01" table-layout: fixed; box-sizing: border-box>
+            <tr>
+              <th>Container Name</th>
+              <th>Container ID</th> 
+              <th>Container Image</th>
+              <th>Container Status</th>
+            </tr>
+            {% for row in table %}
+              <tr>
+                <td>{{row['name']}}</td>
+                <td>{{row['container_id']}}</td>
+                <td>{{row['image']}}</td>
+                <td>{{row['status']}}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        </article>
+{% endblock content %}

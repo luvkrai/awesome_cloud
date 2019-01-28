@@ -19,3 +19,9 @@ def launch_container():
     return render_template('launch.html', title='Launch Container',
                            form=form, legend='New Container')
 
+@docker.route("/exited_container")
+@login_required
+def exited_container():
+	r = requests.get('http://localhost:50001/exited_container')
+	table = r.json()
+	return render_template('exited.html',user=current_user,table=table)
