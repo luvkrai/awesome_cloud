@@ -2,7 +2,6 @@ from flask import render_template, request, Blueprint, flash
 from flask_login import login_user, current_user, login_required
 from flaskblog.docker_data.forms import LaunchContainer
 import requests
-from flask_cors import cross_origin
 import json
 
 docker = Blueprint('docker', __name__)
@@ -23,7 +22,6 @@ def launch_container():
 
 @docker.route("/exited_container")
 @login_required
-#@cross_origin(supports_credentials=True)
 def exited_container():
 	r = requests.get('http://localhost:50001/exited_container')
 	table = r.json()
@@ -38,4 +36,3 @@ def delete_container(data):
         pass
     table = r1.json()
     return json.dumps({'table':table, 'success':res['success']})
-    #return str(r.json())
