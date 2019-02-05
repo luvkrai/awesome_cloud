@@ -10,7 +10,7 @@ def getDocker(status=None):
 	client = initialize_docker()
 	result = []
 	if status:
-		container_list = client.containers.list(status)
+		container_list = client.containers.list(filters=status)
 	else:
 		container_list = client.containers.list()
 	for container in container_list:
@@ -88,7 +88,7 @@ def launch_container():
 def delete_container(data):
 	client = initialize_docker()
 	try:
-		exited_containers = client.containers.list({'status':'exited'})
+		exited_containers = client.containers.list(filters={'status':'exited'})
 		for container in exited_containers:
 			if container.short_id in data.split(','):
 				container.remove()
