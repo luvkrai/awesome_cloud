@@ -14,12 +14,20 @@ def getDocker(status=None):
 	else:
 		container_list = client.containers.list()
 	for container in container_list:
-		row = {
-		'name': container.name,
-		'container_id': container.short_id,
-		'image': container.image.tags[0],
-		'status': container.status
-		}
+		if status:
+			row = {
+			'name': container.name,
+			'container_id': container.short_id,
+			'image': container.image.tags[0],
+			'status': container.status,
+			}
+		else:
+			row = {
+				'name': container.name,
+				'container_id': container.short_id,
+				'image': container.image.tags[0],
+				'status': container.status
+			}
 		result.append(row)
 	return result
 
@@ -75,6 +83,18 @@ def launch_container():
 		return jsonify({'result': 'True'})
 	else:
 		return jsonify({'result': 'False'})
-	
+
+@app.route("/delete_container/<data>",methods=['GET', 'POST'])
+def delete_container(data):
+	client = initialize_docker()
+	try:
+		exited_containers = client.containers.list({'status':'exited'})
+		for container in exited_containers:
+			if container.short_id in data.split(','):
+				container.remove()
+		return jsonify({'success': True})
+	except:
+		return jsonify({'success': False})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=50001,debug=True)
