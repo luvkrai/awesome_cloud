@@ -18,6 +18,7 @@
               <th>Container ID</th> 
               <th>Container Image</th>
               <th>Container Status</th>
+              <th>Created On</th>
             </tr>
             {% for row in table %}
               <tr>
@@ -25,6 +26,7 @@
                 <td>{{row['container_id']}}</td>
                 <td>{{row['image']}}</td>
                 <td>{{row['status']}}</td>
+                <td>{{row['date']}}</td>
               </tr>
             {% endfor %}
           </table>

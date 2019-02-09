@@ -78,9 +78,12 @@ def exited_container():
 def launch_container():
 	content = request.json
 	client = initialize_docker()
-	container = client.containers.run(content['image'], content['command'],detach=True)
+	name = None
+	if content['name'] != "":
+		name = content['name']
+	container = client.containers.run(image=content['image'], command=content['command'],name=name,detach=True)
 	if container:
-		return jsonify({'result': 'True'})
+		return jsonify({'result': 'True','container_id':container.short_id})
 	else:
 		return jsonify({'result': 'False'})
 
