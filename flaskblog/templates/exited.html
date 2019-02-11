@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
-<script src="{{url_for('static', filename='awesome_js.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='awesome_js.js')}}" type="text/javascript">
+</script>
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}">
           <div class="media-body">
@@ -36,5 +37,6 @@
           </table>
         <input class="btn btn-outline-info" id="submit" type="submit" name="submit" value="Delete Container" onclick="get_exited()" />
         <div id="flash"></div>
-
+        <div class="collapse loader" id="loader">
+        </div>
 {% endblock content %}

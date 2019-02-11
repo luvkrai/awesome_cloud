@@ -24,6 +24,9 @@ function get_exited() {
     data:"hhh",
     dataType:'text',
     beforeSend:function(){
+     $('#submit').toggle();
+     $('#loader').toggle();
+     $('#t01').find('*').prop('disabled',true);
      return confirm("Are you sure?");
     },
     success: function(data){
@@ -56,4 +59,10 @@ function get_exited() {
             response_status.push('[{"type": "danger", "message": "Ooops! an error occurred"}]');
             }
         $('#flash').append(flashMessage(JSON.parse(response_status)));
-    }});}
+
+        }}).always(function() {
+            $('#t01').find('*').prop('disabled',false);
+            $('#loader').toggle();
+            $('#submit').toggle();
+        })
+    ;}
