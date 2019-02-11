@@ -24,6 +24,9 @@ function get_exited() {
     data:"hhh",
     dataType:'text',
     beforeSend:function(){
+     $('#submit').toggle();
+     $('#loader').toggle();
+     $('#t01').find('*').prop('disabled',true);
      return confirm("Are you sure?");
     },
     success: function(data){
@@ -54,5 +57,9 @@ function get_exited() {
         else{
             response_status.push('[{"type": "danger", "message": "Ooops! an error occurred"}]');
             }
+
+        $('#t01').find('*').prop('disabled',false);
+        $('#loader').toggle();
+        $('#submit').toggle();
         $('#flash').append(flashMessage(JSON.parse(response_status)));
     }});}
