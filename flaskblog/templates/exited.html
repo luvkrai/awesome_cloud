@@ -19,6 +19,7 @@
               <th>Container ID</th> 
               <th>Container Image</th>
               <th>Container Status</th>
+              <th>Created On</th>
               <th>Action</th>
             </tr>
             <tbody>
@@ -28,6 +29,7 @@
                 <td>{{row['container_id']}}</td>
                 <td>{{row['image']}}</td>
                 <td>{{row['status']}}</td>
+                <td>{{row['date']}}</td>
                 <td><input type="checkbox" name="docker_exited[]" id="docker_exited" value="{{row['container_id']}}"></td>
               </tr>
             {% endfor %}

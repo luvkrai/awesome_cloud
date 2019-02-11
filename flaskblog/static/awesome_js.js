@@ -43,6 +43,7 @@ function get_exited() {
             $('<td>').text(item.container_id),
             $('<td>').text(item.image),
             $('<td>').text(item.status),
+			$('<td>').text(item.date),
             $('<td>').html('<input type="checkbox" name="docker_exited[]" id="docker_exited" value="'+item.container_id+'">')
             ).appendTo('#t01');
             //console.log($tr.wrap('<p>').html());

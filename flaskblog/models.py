@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    containers = db.relationship('Containers', backref='creator', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -32,3 +33,20 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
+class Containers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    container_id = db.Column(db.String(100), nullable=False)
+    data_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    image = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.container_id}', '{self.data_created}', '{self.image}')"
+
+
+def init_db():
+    db.create_all()
+
+if __name__ == '__main__':
+    init_db()
