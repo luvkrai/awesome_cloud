@@ -58,9 +58,11 @@ function get_exited() {
         else{
             response_status.push('[{"type": "danger", "message": "Ooops! an error occurred"}]');
             }
-
-        $('#t01').find('*').prop('disabled',false);
-        $('#loader').toggle();
-        $('#submit').toggle();
         $('#flash').append(flashMessage(JSON.parse(response_status)));
-    }});}
+
+        }}).always(function() {
+            $('#t01').find('*').prop('disabled',false);
+            $('#loader').toggle();
+            $('#submit').toggle();
+        })
+    ;}
