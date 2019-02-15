@@ -2,16 +2,6 @@
 {% block content %}
 <script src="{{url_for('static', filename='awesome_js.js')}}" type="text/javascript">
 </script>
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#"></a>
-            </div>
-            <p class="article-content">{{ user.username }}</p>
-            <p class="article-content">{{ text }}</p>
-          </div>
-        </article>
         <p> Exited Container Details</p>
             <table id="t01" table-layout: fixed; box-sizing: border-box>
             <tr>

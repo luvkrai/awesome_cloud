@@ -43,7 +43,7 @@ def launch_container():
             flash('A container has been created!', 'success')
         else:
             flash('Error!! Could not create the container', 'danger')
-    return render_template('launch.html', title='Launch Container',
+    return render_template('launch.html', title='Launch Container', user=current_user,
                            form=form, legend='New Container')
 
 @docker.route("/exited_container")

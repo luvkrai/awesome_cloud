@@ -89,6 +89,7 @@ table, th, td {
 th, td {
   padding: 15px;
   text-align: left;
+  color: darkslateblue;
 }
 table#t01 tr:nth-child(even) {
   background-color: #eee;
@@ -97,7 +98,7 @@ table#t01 tr:nth-child(odd) {
  background-color: #fff;
 }
 table#t01 th {
-  background-color: black;
+  background-color: cornflowerblue;
   color: white;
 }
 
@@ -124,4 +125,33 @@ table#t01 th {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.action-menu {
+    left: unset;
+}
+
+.dropdown-account::after {
+    display: none;
+}
+
+.login-img{
+    height: 25px;
+    width: 25px;
+    margin-right: 16px;
+	padding: 1px;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+.video_content {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  padding: 20px;
 }

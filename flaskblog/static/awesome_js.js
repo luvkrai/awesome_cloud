@@ -1,3 +1,15 @@
+    $(document).ready(function(){
+      $('#container_menu').hover(function() {
+      $('#navbarDropdown').dropdown('toggle').stop(true, true).delay(200).fadeIn(200);
+    }, function() {
+      $('#navbarDropdown').dropdown('toggle').stop(true, true).delay(200).fadeIn(200);
+    });
+    $('#account_menu').hover(function() {
+      $('#navprofileDropdown').dropdown('toggle').stop(true, true).delay(200).fadeIn(200);
+    }, function() {
+      $('#navprofileDropdown').dropdown('toggle').stop(true, true).delay(200).fadeIn(200);
+    });
+});
 
 function flashMessage(data) {
 html = '';
@@ -7,6 +19,9 @@ for (i=0; i<data.length; i++) {
 return html;
 }
 
+function nav_toggle(){
+
+}
 
 
 function get_exited() {
@@ -66,3 +81,4 @@ function get_exited() {
             $('#submit').toggle();
         })
     ;}
+
